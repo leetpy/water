@@ -99,6 +99,10 @@ html {
   @apply menu menu-sm;
 }
 
+#TableOfContents ol {
+  @apply menu menu-sm;
+}
+
 .dream-alert {
   > .heading {
     @apply flex items-center gap-1 text-sm font-medium;
