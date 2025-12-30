@@ -129,7 +129,8 @@ html {
   position: relative;
   display: flex;
   flex-direction: column;
-  width: fit-content;
+  width: 100%;
+  align-items: flex-start;
   white-space: nowrap;
 }
 
@@ -150,6 +151,8 @@ html {
   counter-increment: toc-counter;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
 }
 
 /* 确保嵌套 ol 中的 li > a 不会被应用 grid 布局，保持一行一个 */
@@ -157,6 +160,8 @@ html {
 #TableOfContents ol ol li > a,
 #TableOfContents ol li ol li > a {
   display: block !important;
+  text-align: left;
+  width: 100%;
 }
 
 /* 确保 ol 中的 menu-active 类能正确应用样式 */

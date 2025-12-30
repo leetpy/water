@@ -2921,7 +2921,8 @@ html {
   position: relative;
   display: flex;
   flex-direction: column;
-  width: fit-content;
+  width: 100%;
+  align-items: flex-start;
   white-space: nowrap;
 }
 #TableOfContents ol li ol::before {
@@ -2938,9 +2939,13 @@ html {
   counter-increment: toc-counter;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
 }
 #TableOfContents ol ol li > a, #TableOfContents ol li ol li > a {
   display: block !important;
+  text-align: left;
+  width: 100%;
 }
 #TableOfContents ol li > a.menu-active {
   --tw-outline-style: none;
