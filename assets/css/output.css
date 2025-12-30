@@ -2911,8 +2911,11 @@ html {
   content: counter(toc-counter) ".";
   position: absolute;
   left: 0;
+  top: 50%;
+  transform: translateY(-50%);
   color: var(--color-base-content);
   opacity: 0.6;
+  line-height: 1;
 }
 #TableOfContents ol ol, #TableOfContents ol li ol {
   counter-reset: toc-counter;
@@ -2937,10 +2940,22 @@ html {
 }
 #TableOfContents ol ol > li, #TableOfContents ol li ol > li {
   counter-increment: toc-counter;
+  position: relative;
+  padding-left: 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
+}
+#TableOfContents ol ol > li::before, #TableOfContents ol li ol > li::before {
+  content: counters(toc-counter, ".") ".";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-base-content);
+  opacity: 0.6;
+  line-height: 1;
 }
 #TableOfContents ol ol li > a, #TableOfContents ol li ol li > a {
   display: block !important;

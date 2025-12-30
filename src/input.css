@@ -116,11 +116,14 @@ html {
   content: counter(toc-counter) ".";
   position: absolute;
   left: 0;
+  top: 50%;
+  transform: translateY(-50%);
   color: var(--color-base-content);
   opacity: 0.6;
+  line-height: 1;
 }
 
-/* 嵌套的 ol 使用独立的计数器，并确保与 ul 的样式一致 */
+/* 嵌套的 ol 使用多级计数器，并确保与 ul 的样式一致 */
 #TableOfContents ol ol,
 #TableOfContents ol li ol {
   counter-reset: toc-counter;
@@ -149,10 +152,25 @@ html {
 #TableOfContents ol ol > li,
 #TableOfContents ol li ol > li {
   counter-increment: toc-counter;
+  position: relative;
+  padding-left: 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
+}
+
+/* 为嵌套的 ol 中的 li 添加序号，使用多级计数器格式（如 1.1, 1.2） */
+#TableOfContents ol ol > li::before,
+#TableOfContents ol li ol > li::before {
+  content: counters(toc-counter, ".") ".";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-base-content);
+  opacity: 0.6;
+  line-height: 1;
 }
 
 /* 确保嵌套 ol 中的 li > a 不会被应用 grid 布局，保持一行一个 */
