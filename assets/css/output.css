@@ -2911,11 +2911,10 @@ html {
   content: counter(toc-counter) ".";
   position: absolute;
   left: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  top: calc(0.25rem * 1);
   color: var(--color-base-content);
   opacity: 0.6;
-  line-height: 1;
+  line-height: 1.25rem;
 }
 #TableOfContents ol ol, #TableOfContents ol li ol {
   counter-reset: toc-counter;
@@ -2951,11 +2950,10 @@ html {
   content: counters(toc-counter, ".") ".";
   position: absolute;
   left: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  top: calc(0.25rem * 1);
   color: var(--color-base-content);
   opacity: 0.6;
-  line-height: 1;
+  line-height: 1.25rem;
 }
 #TableOfContents ol ol li > a, #TableOfContents ol li ol li > a {
   display: block !important;
