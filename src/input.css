@@ -103,6 +103,18 @@ html {
   @apply menu menu-sm;
 }
 
+/* 确保 ol 中的 menu-active 类能正确应用样式 */
+/* 使用更具体的选择器确保样式能正确应用，覆盖 :where() 的低特异性 */
+#TableOfContents ol li > a.menu-active {
+  --tw-outline-style: none;
+  outline-style: none;
+  color: var(--menu-active-fg);
+  background-color: var(--menu-active-bg);
+  background-size: auto, calc(var(--noise) * 100%);
+  background-image: none, var(--fx-noise);
+  box-shadow: 0 2px calc(var(--depth) * 3px) -2px var(--menu-active-bg);
+}
+
 .dream-alert {
   > .heading {
     @apply flex items-center gap-1 text-sm font-medium;
