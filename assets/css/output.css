@@ -2914,12 +2914,33 @@ html {
   color: var(--color-base-content);
   opacity: 0.6;
 }
-#TableOfContents ol ol {
+#TableOfContents ol ol, #TableOfContents ol li ol {
   counter-reset: toc-counter;
-  margin-left: 1rem;
+  margin-inline-start: calc(0.25rem * 4);
+  padding-inline-start: calc(0.25rem * 2);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  white-space: nowrap;
 }
-#TableOfContents ol ol > li {
+#TableOfContents ol li ol::before {
+  position: absolute;
+  inset-inline-start: calc(0.25rem * 0);
+  top: calc(0.25rem * 3);
+  bottom: calc(0.25rem * 3);
+  background-color: var(--color-base-content);
+  opacity: 10%;
+  width: var(--border, 1px);
+  content: "";
+}
+#TableOfContents ol ol > li, #TableOfContents ol li ol > li {
   counter-increment: toc-counter;
+  display: flex;
+  flex-direction: column;
+}
+#TableOfContents ol ol li > a, #TableOfContents ol li ol li > a {
+  display: block !important;
 }
 #TableOfContents ol li > a.menu-active {
   --tw-outline-style: none;
