@@ -101,6 +101,33 @@ html {
 
 #TableOfContents ol {
   @apply menu menu-sm;
+  counter-reset: toc-counter;
+  padding-left: 0;
+}
+
+/* 使用 CSS counter 为 ol 中的 li 元素添加序号 */
+#TableOfContents ol > li {
+  counter-increment: toc-counter;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+#TableOfContents ol > li::before {
+  content: counter(toc-counter) ".";
+  position: absolute;
+  left: 0;
+  color: var(--color-base-content);
+  opacity: 0.6;
+}
+
+/* 嵌套的 ol 使用独立的计数器 */
+#TableOfContents ol ol {
+  counter-reset: toc-counter;
+  margin-left: 1rem;
+}
+
+#TableOfContents ol ol > li {
+  counter-increment: toc-counter;
 }
 
 /* 确保 ol 中的 menu-active 类能正确应用样式 */

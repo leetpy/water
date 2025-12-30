@@ -2899,6 +2899,27 @@ html {
       padding-block: calc(0.25rem * 2);
     }
   }
+  counter-reset: toc-counter;
+  padding-left: 0;
+}
+#TableOfContents ol > li {
+  counter-increment: toc-counter;
+  position: relative;
+  padding-left: 1.5rem;
+}
+#TableOfContents ol > li::before {
+  content: counter(toc-counter) ".";
+  position: absolute;
+  left: 0;
+  color: var(--color-base-content);
+  opacity: 0.6;
+}
+#TableOfContents ol ol {
+  counter-reset: toc-counter;
+  margin-left: 1rem;
+}
+#TableOfContents ol ol > li {
+  counter-increment: toc-counter;
 }
 #TableOfContents ol li > a.menu-active {
   --tw-outline-style: none;
