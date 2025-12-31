@@ -12,6 +12,10 @@
 
 @config '../tailwind.config.js';
 
+:root {
+  --radius-selector: 5px;
+}
+
 html {
   scroll-behavior: smooth;
 }
