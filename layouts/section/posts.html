@@ -16,27 +16,46 @@
 
   <div class="max-w-[65ch] mx-auto mt-8 lg:mt-12">
     <ul class="timeline timeline-vertical">
-      {{ $groupLayout := default "2006" .Params.groupLayout }}
-      {{ range .Pages.GroupByDate $groupLayout }}
+      {{ range .Pages.GroupByDate "2006" }}
+      {{ $yearKey := .Key }}
+      {{ $yearDayGroups := .Pages.GroupByDate "2006-01-02" }}
+      <!-- Year Title -->
       <li class="[--timeline-col-start:64px]">
         <hr class="dark:bg-base-content" />
-        <div class="timeline-start justify-self-start!">
-          <div class="text-lg font-semibold">{{ .Key }}</div>
+        <div class="timeline-start justify-self-end pr-4">
+          <div class="text-2xl font-bold text-primary mb-1 text-right">{{ $yearKey }}</div>
         </div>
         <div class="timeline-middle flex items-center mx-8 my-2">
-          <ion-icon name="time"></ion-icon>
+          <ion-icon name="calendar" class="text-primary text-xl"></ion-icon>
         </div>
-        <div class="timeline-end timeline-box dark:border-base-content/60 prose dark:prose-invert my-8 text-sm">
-          <ul>
-            {{ range .Pages }}
+        <div class="timeline-end"></div>
+        <hr class="dark:bg-base-content" />
+      </li>
+      <!-- Days under this year -->
+      {{ range $dayGroup := $yearDayGroups }}
+      <li class="[--timeline-col-start:64px]">
+        <hr class="dark:bg-base-content" />
+        <div class="timeline-start justify-self-end pr-4">
+          <div class="text-sm font-normal text-base-content/50 text-right">
+            {{ $firstPage := index $dayGroup.Pages 0 }}
+            {{ $firstPage.Date | time.Format "01-02" }}
+          </div>
+        </div>
+        <div class="timeline-middle flex items-center mx-8 my-2">
+          <ion-icon name="time" class="text-base-content/40 text-base"></ion-icon>
+        </div>
+        <div class="timeline-end timeline-box dark:border-base-content/60 prose dark:prose-invert my-6 text-sm">
+          <ul class="space-y-1">
+            {{ range $dayGroup.Pages }}
             <li>
-              <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+              <a href="{{ .RelPermalink }}" class="hover:text-primary transition-colors">{{ .Title }}</a>
             </li>
             {{ end }}
           </ul>
         </div>
         <hr class="dark:bg-base-content" />
       </li>
+      {{ end }}
       {{ end }}
     </ul>
   </div>
